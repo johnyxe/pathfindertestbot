@@ -7,6 +7,7 @@ error_reporting(E_ALL);
 /*---------------------------------------------------*/
 /* include composer autoload and config file
 /*---------------------------------------------------*/
+
 require_once 'vendor/autoload.php';
 require_once 'config.php';
 
@@ -75,59 +76,33 @@ $events = json_decode($request, true);
 /* Handle request
 /*---------------------------------------------------*/
 
-if(!is_null($events)){
-    // ถ้ามีค่า สร้างตัวแปรเก็บ replyToken ไว้ใช้งาน
-    $replyToken = $events['events']['replyToken'];
-}
-// ส่วนของคำสั่งจัดเตียมรูปแบบข้อความสำหรับส่ง
-$textMessageBuilder = new TextMessageBuilder(json_encode($events));
- 
-//l ส่วนของคำสั่งตอบกลับข้อความ
-$response = $bot->replyMessage($replyToken,$textMessageBuilder);
-if ($response->isSucceeded()) {
-    echo 'Succeeded!';
-    return;
-}
- 
-// Failed
-echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
+if ( !is_null($request_array) ) {
 
-
-
-
-
-
-
-
-
-
-// if ( !is_null($request_array) ) {
-
-//     foreach ( $request_array['events'] as $event ){
+    foreach ( $request_array['events'] as $event ){
       
-//       	$reply_message = '';
-//       	$reply_token = $event['replyToken'];
-//       	$data = [
-//          	'replyToken' => $reply_token,
-//          	'messages' => [
-//             	[	
-//             		'type' => 'text', 
-//              		'text' => json_encode($request_array)
-//              	]
-//          	]
-//       	];
+      	$reply_message = '';
+      	$reply_token = $event['replyToken'];
+      	$data = [
+         	'replyToken' => $reply_token,
+         	'messages' => [
+            	[	
+            		'type' => 'text', 
+             		'text' => json_encode($request_array)
+             	]
+         	]
+      	];
 
-//       	// Reply message builder
-//       	$textMessageBuilder = new TextMessageBuilder( json_encode($event, JSON_UNESCAPED_UNICODE) );
+      	// Reply message builder
+      	$textMessageBuilder = new TextMessageBuilder( json_encode($event, JSON_UNESCAPED_UNICODE) );
 
-//       	// Reply message
-//       	$response = $bot->replyMessage( $replyToken, $textMessageBuilder );
-// 		if ($response->isSucceeded()) {
-// 		    echo 'Succeeded!';
-// 		    return;
-// 		}
+      	// Reply message
+      	$response = $bot->replyMessage( $replyToken, $textMessageBuilder );
+		if ($response->isSucceeded()) {
+		    echo 'Succeeded!';
+		    return;
+		}
 
-// 		// Failed
-// 	    echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
-//    }
-// }
+		// Failed
+	    echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
+   }
+}
