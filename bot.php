@@ -82,7 +82,8 @@ if(!is_null($events)){
     $replyToken = $events['events'][0]['replyToken'];
 }
 // ส่วนของคำสั่งจัดเตียมรูปแบบข้อความสำหรับส่ง
-$textMessageBuilder = new LINE\LINEBot\MessageBuilder\TextMessageBuilder(json_encode($events));
+//$textMessageBuilder = new LINE\LINEBot\MessageBuilder\TextMessageBuilder(json_encode($events));
+$textMessageBuilder = new LINE\LINEBot\MessageBuilder\TextMessageBuilder('Who wanna go on the zipline!');
  
 //l ส่วนของคำสั่งตอบกลับข้อความ
 $response = $bot->replyMessage($replyToken,$textMessageBuilder);
