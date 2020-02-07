@@ -1,15 +1,15 @@
 <?php
 
-// ini_set('display_errors', 1);
-// ini_set('display_startup_errors', 1);
-// error_reporting(E_ALL);
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 /*---------------------------------------------------*/
 /* include composer autoload and config file
 /*---------------------------------------------------*/
 
 require 'vendor/autoload.php';
-require_once('vendor/linecorp/line-bot-sdk/line-bot-sdk-tiny/LINEBotTiny.php');
+//require_once('vendor/linecorp/line-bot-sdk/line-bot-sdk-tiny/LINEBotTiny.php');
 //require_once 'config.php';
 
 /*---------------------------------------------------*/
