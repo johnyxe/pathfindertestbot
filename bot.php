@@ -75,7 +75,7 @@ $request_array = json_decode($request, true);
 /* Handle request
 /*---------------------------------------------------*/
 
-if ( sizeof( $request_array['events'] ) > 0 ) {
+if ( !is_null($request_array) ) {
 
     foreach ( $request_array['events'] as $event ){
       
