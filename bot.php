@@ -71,20 +71,26 @@ $bot = new \LINE\LINEBot( $httpClient, array( 'channelSecret' => $CHANNEL_SECRET
 
 $content = file_get_contents('php://input');
 // Decode JSON to Array
-$events = json_decode($content, true);
+$request_array = json_decode($content, true);
 
 /*---------------------------------------------------*/
 /* Handle request
 /*---------------------------------------------------*/
 
-if(!is_null($events)){
-    // ถ้ามีค่า สร้างตัวแปรเก็บ replyToken ไว้ใช้งาน
-    $replyToken = $events['events'][0]['replyToken'];
+if(!is_null($request_array)){
+    
+    // Main data
+    $event = $request_array['events'][0];
+
+    $replyToken = $event['replyToken'];
+    $customerMessage = $event['message']['text']
+
 }
 // ส่วนของคำสั่งจัดเตียมรูปแบบข้อความสำหรับส่ง
 //$textMessageBuilder = new LINE\LINEBot\MessageBuilder\TextMessageBuilder(json_encode($events));
-$textMessageBuilder = new LINE\LINEBot\MessageBuilder\TextMessageBuilder('Who wanna go on the zipline!');
+$textMessageBuilder = new LINE\LINEBot\MessageBuilder\TextMessageBuilder( 'You said: ' . $customerMessage );
  
+
 //l ส่วนของคำสั่งตอบกลับข้อความ
 $response = $bot->replyMessage($replyToken,$textMessageBuilder);
 if ($response->isSucceeded()) {
@@ -99,35 +105,6 @@ echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
 
 
 
-// if ( !is_null($request_array) ) {
 
-//     foreach ( $request_array['events'] as $event ){
-      
-//       	$reply_message = '';
-//       	$reply_token = $event['replyToken'];
-//       	$data = [
-//          	'replyToken' => $reply_token,
-//          	'messages' => [
-//             	[	
-//             		'type' => 'text', 
-//              		'text' => json_encode($request_array)
-//              	]
-//          	]
-//       	];
-
-//       	// Reply message builder
-//       	$textMessageBuilder = new TextMessageBuilder( json_encode($event, JSON_UNESCAPED_UNICODE) );
-
-//       	// Reply message
-//       	$response = $bot->replyMessage( $replyToken, $textMessageBuilder );
-// 		if ($response->isSucceeded()) {
-// 		    echo 'Succeeded!';
-// 		    return;
-// 		}
-
-// 		// Failed
-// 	    echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
-//    }
-// }
 
 ?>
