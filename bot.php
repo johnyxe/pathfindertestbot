@@ -77,7 +77,7 @@ $events = json_decode($request, true);
 
 if(!is_null($events)){
     // ถ้ามีค่า สร้างตัวแปรเก็บ replyToken ไว้ใช้งาน
-    $replyToken = $events['events'][0]['replyToken'];
+    $replyToken = $events['events']['replyToken'];
 }
 // ส่วนของคำสั่งจัดเตียมรูปแบบข้อความสำหรับส่ง
 $textMessageBuilder = new TextMessageBuilder(json_encode($events));
