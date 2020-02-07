@@ -70,7 +70,7 @@ $bot = new LINEBot( $httpClient, array( 'channelSecret' => $CHANNEL_SECRET) );
 
 $request = file_get_contents('php://input');
 // Decode JSON to Array
-$events = json_decode($request, true);
+$request_array = json_decode($request, true);
 
 /*---------------------------------------------------*/
 /* Handle request
