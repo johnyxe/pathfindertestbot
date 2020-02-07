@@ -55,8 +55,8 @@ require_once('vendor/linecorp/line-bot-sdk/line-bot-sdk-tiny/LINEBotTiny.php');
 /*---------------------------------------------------*/
 
 $API_URL = '1653836756';
-$ACCESS_TOKEN = 'LINE_MESSAGE_CHANNEL_SECRET';
-$CHANNEL_SECRET = 'AWfgTiKiPRZ+vQc2wiifytwhm4sNvzx+B347DdMWwokxLAqjfy9q2Kf+EGQmAb16dAKpXWRqWqTY+1A85IT711cuEKj4lTLgEqRoorHzeXTZtrnIWS27oHjJbfypOYu6jcJv+bGMzbfTMKpGKQBkIAdB04t89/1O/w1cDnyilFU=';
+$ACCESS_TOKEN = 'AWfgTiKiPRZ+vQc2wiifytwhm4sNvzx+B347DdMWwokxLAqjfy9q2Kf+EGQmAb16dAKpXWRqWqTY+1A85IT711cuEKj4lTLgEqRoorHzeXTZtrnIWS27oHjJbfypOYu6jcJv+bGMzbfTMKpGKQBkIAdB04t89/1O/w1cDnyilFU=';
+$CHANNEL_SECRET = '94c84baab00e8d0e6a778ad32b37247d';
 
 /*---------------------------------------------------*/
 /* Connecting via HTTP
