@@ -83,7 +83,7 @@ if(!is_null($request_array)){
     $event = $request_array['events'][0];
 
     $replyToken = $event['replyToken'];
-    $customerMessage = $event['message']['text']
+    $customerMessage = $event['message']['text'];
 
 }
 // ส่วนของคำสั่งจัดเตียมรูปแบบข้อความสำหรับส่ง
